@@ -65,12 +65,13 @@ end
 
 % Separate samples of each class in a cell array
 
-c = max(trainLabel);
+[u, ~, idxU] = unique(trainLabel);
+c = numel(u);
 dataCell = cell(1,c);
 nSample = zeros(1,c);
 for i = 1:c
-    ind = find(trainLabel==i);
-    nSample(i) = length(ind);
+    ind = find(idxU==i);
+    nSample(i) = numel(ind);
     dataCell{1,i} = trainData(:,ind);
 end
 clear trainLabel
