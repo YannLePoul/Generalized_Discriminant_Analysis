@@ -82,6 +82,19 @@ clear trainLabel
 kTrainCell = cell(c,c);
 for p = 1:c
     for q = 1:c
+%% test if the results are similar with vectorized version of the code
+%         classP = rand(3,30);
+%         classQ = rand(3,30)+3;
+%        Kpq = zeros(size(classP,2),size(classQ,2));
+%        options.KernelType = 'wave';
+%         for i = 1:size(classP,2)
+%             for j = 1:size(classQ,2)
+%                 Kpq(i,j) = kernel(classP(:,i),classQ(:,j),options);
+%             end
+%         end
+%         Kpq2 = f_kernel(classP,classQ,options);
+%         disp(isequal(Kpq,Kpq2))
+        %%
         Kpq = f_kernel(dataCell{1,p},dataCell{1,q},options);
         kTrainCell{p,q} = Kpq;
     end
